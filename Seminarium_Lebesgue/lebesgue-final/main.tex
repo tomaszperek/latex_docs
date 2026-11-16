@@ -1,0 +1,58 @@
+\documentclass[a4paper]{wmpart}
+
+\usepackage{tgtermes}
+\usepackage[T1]{fontenc}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\input{glyphtounicode}
+\pdfgentounicode=1
+\usepackage{amsthm}
+\usepackage[colorlinks]{hyperref}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usetikzlibrary{cd}
+\usetikzlibrary{babel}
+\nonfrenchspacing
+
+\input{macros}
+
+\bibliographystyle{plain}
+
+\uczelnia{Uniwersytet Kardynała Stefana Wyszyńskiego w~Warszawie}
+\instytut{Wydział Matematyczno-Przyrodniczy. Szkoła Nauk Ścisłych}
+%autor pracy:
+\author{Tomasz Perek}
+%numer albumu:
+\nralbumu{128883}
+
+\title{Konstrukcja miary Lebesgue'a w $\Rn$. Charakteryzacja zbiorów mierzalnych w sensie Lebesgue'a i własności miary Lebesgue'a}
+\kierunek{matematyka zaoczna}
+
+\date{2026}
+\keywords{miara Lebesgue'a, miara zewnętrzna, warunek Carathéodory'ego, zbiory borelowskie, regularność miary, zbiór Vitalego, niezmienniczość na translacje}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    Niniejsza praca poświęcona jest systematycznemu przedstawieniu miary Lebesgue'a w przestrzeni euklidesowej $\Rn$. Wychodząc od elementarnego pojęcia objętości $n$-wymiarowych kostek, konstruuje się zewnętrzną miarę Lebesgue'a, a następnie za pomocą metody Carathéodory'ego wyznacza się $\sigma$-algebrę zbiorów mierzalnych w sensie Lebesgue'a. Szczególną uwagę poświęcono charakteryzacji zbiorów mierzalnych w sensie Lebesgue'a oraz własnościom samej miary.
+\end{abstract}
+
+
+
+\tableofcontents
+
+
+\input{sections/01-wstep}
+\input{sections/02-podstawowe-pojecia}
+\input{sections/03-miara-zewnetrzna}
+\input{sections/04-konstrukcja-caratheodory}
+\input{sections/05-charakteryzacja-zbiorow-mierzalnych}
+\input{sections/06-wlasnosci-miary}
+\input{sections/07-wnioski-i-zastosowania}
+\input{sections/bibliografia}
+
+\end{document}

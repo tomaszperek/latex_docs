@@ -1,0 +1,39 @@
+% Talk notation. Add commands here.
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\let\Rn\relax
+\newcommand{\Rn}{\mathbb{R}^n}
+
+% Power set of a set.
+\newcommand{\Pow}{\mathcal{P}}
+
+\newcommand{\eps}{\varepsilon}
+
+% Rodziny zbiorów
+\newcommand{\Borel}[1]{\mathcal{B}(#1)}
+\newcommand{\BorelRn}{\Borel{\Rn}}
+\newcommand{\Leb}[1]{\mathcal{L}(#1)}
+\newcommand{\LRn}{\Leb{\Rn}}
+
+% Miary
+\newcommand{\lzn}{\lambda^{*n}}
+
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\diam}{diam}
+
+\theoremstyle{definition}
+\newtheorem{mydef}{Definicja}[section]
+
+\theoremstyle{plain}
+\newtheorem{mythm}[mydef]{Twierdzenie}
+\newtheorem{mywn}[mydef]{Wniosek}
+
+% Quiz: odpowiedzi
+\newcommand{\TAK}{\textcolor{green!50!black}{\textbf{TAK}}}
+\newcommand{\NIE}{\textcolor{red!70!black}{\textbf{NIE}}}

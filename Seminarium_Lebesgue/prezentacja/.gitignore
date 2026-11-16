@@ -1,0 +1,31 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.nav
+*.snm
+*.vrb
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.bak
+*.tmp
+*-blx.bib
+*.xdv
+
+# Output (copied to ../lebesgue-prezentacja.pdf)
+main.pdf
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp

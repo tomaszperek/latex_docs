@@ -1,0 +1,70 @@
+\section{Wnioski i zastosowania}
+
+Konstrukcja miary Lebesgue'a nie była jedynie celem samym w sobie, lecz fundamentem pod wielką przebudowę analizy matematycznej na początku XX wieku. Zwieńczeniem niniejszej pracy jest pokazanie, jak geometryczna teoria miary staje się punktem wyjścia dla nowoczesnej teorii całki, analizy funkcjonalnej (przestrzenie $L^p$) oraz rygorystycznej aksjomatyki rachunku prawdopodobieństwa Kołmogorowa. To właśnie na fundamencie mierzalności Lebesgue'a opiera się współczesna fizyka matematyczna i teoria sygnałów.
+
+\subsection{Główne wnioski teoretyczne}
+
+\begin{enumerate}
+    \item \textbf{Przezwyciężenie ograniczeń miary Jordana}:
+          Miara Jordana (oparta na skończonej addytywności i przybliżaniu skończonymi sumami kostek) nie pozwalała na mierzenie wielu elementarnych podzbiorów, takich jak zbiór liczb wymiernych $\mathbb{Q} \cap [0, 1]$. W teorii Lebesgue'a, dzięki przejściu do przeliczalnych pokryć oraz $\sigma$-addytywności, każdy zbiór przeliczalny ma miarę zero, a klasa zbiorów mierzalnych tworzy pełną $\sigma$-algebrę zawierającą wszystkie zbiory borelowskie.
+
+    \item \textbf{Zupełność przestrzeni mierzalnej}:
+          Przestrzeń $(\Rn, \Leb{\Rn}, \lambda^n)$ jest przestrzenią zupełną, co oznacza, że każdy podzbiór zbioru miary zero jest mierzalny. Własność ta usuwa konieczność każdorazowego badania mierzalności podzbiorów zbiorów pomijalnych i gwarantuje stabilność operacji analitycznych.
+
+    \item \textbf{Topologiczna natura mierzalności}:
+          Twierdzenia aproksymacyjne dowodzą, że mierzalność w sensie Lebesgue'a nie jest sztucznym tworem teoriomnogościowym, lecz cechą głęboko powiązaną z topologią euklidesową. Każdy zbiór mierzalny różni się od zbioru otwartego, domkniętego, typu $G_\delta$ lub typu $F_\sigma$ o zbiór miary zero.
+
+    \item \textbf{Konieczność aksjomatyczna i granice mierzalności}:
+          Konstrukcja zbioru Vitalego dowodzi, że przy założeniu aksjomatu wyboru nie jest możliwe skonstruowanie miary na pełnym zbiorze potęgowym $\mathcal{P}(\Rn)$, która byłaby jednocześnie nietrywialna, $\sigma$-addytywna i niezmiennicza względem translacji. Wyznacza to nieprzekraczalną granicę mierzalności.
+\end{enumerate}
+
+\subsection{Kluczowe zastosowania w analizie i naukach pokrewnych}
+
+\subsubsection{1. Konstrukcja i przewaga całki Lebesgue'a}
+
+Bezpośrednią i najważniejszą motywacją konstrukcji miary Lebesgue'a jest definicja \textbf{całki Lebesgue'a}. Podczas gdy konstrukcja Riemanna polega na podziale dziedziny funkcji, Lebesgue zaproponował podział przeciwdziedziny (zbioru wartości):
+\begin{equation}
+    \int_{\Rn} f \, d\lambda^n = \lim_{k \to \infty} \sum_{j} y_j \cdot \lambda^n(f^{-1}([y_j, y_{j+1}))).
+\end{equation}
+Podejście to wymaga, aby przeciwobrazy przedziałów były zbiorami mierzalnymi, co prowadzi do pojęcia \textbf{funkcji mierzalnej}. Do fundamentalnych przewag całki Lebesgue'a nad całką Riemanna należą:
+\begin{itemize}
+    \item \textbf{Twierdzenia graniczne pod znakiem całki}: twierdzenie Lebesgue'a o zbieżności zmajoryzowanej, twierdzenie Beppo Leviego o zbieżności monotonicznej oraz lemat Fatou, które pozwalają na zamianę granic z całkami przy niezwykle ogólnych założeniach.
+    \item \textbf{Całkowalność funkcji silnie oscylujących}: np. funkcja Dirichleta $D(x) = \mathbf{1}_{\mathbb{Q}}(x)$ nie jest całkowalna w sensie Riemanna, podczas gdy jej całka Lebesgue'a istnieje i wynosi $\int_0^1 D(x)\,d\lambda^1 = 0$.
+\end{itemize}
+
+\subsubsection{2. Przestrzenie Banacha i Hilberta $L^p(\Rn)$}
+
+Klasy funkcji całkowalnych z $p$-tą potęgą tworzą przestrzenie:
+\begin{equation}
+    L^p(\Rn) := \left\{ f \colon \Rn \to \mathbb{R} \colon f \text{ jest mierzalna oraz } \int_{\Rn} |f|^p \, d\lambda^n < +\infty \right\} \Big/ \sim,
+\end{equation}
+gdzie relacja równoważności $\sim$ utożsamia funkcje równe prawie wszędzie ($f = g$ p.w. $\iff$ $\lambda^n(\{x \colon f(x) \neq g(x)\}) = 0$).
+
+Dzięki zupełności miary Lebesgue'a oraz twierdzeniom granicznym przestrzenie $L^p(\Rn)$ wyposażone w normę $\|f\|_p = \left( \int |f|^p d\lambda^n \right)^{1/p}$ są **zupełnymi przestrzeniami unormowanymi (przestrzeniami Banacha)**, a dla $p = 2$ — **przestrzenią Hilberta** ze standardowym iloczynem skalarnym:
+\begin{equation}
+    \langle f, g \rangle = \int_{\Rn} f(x) \overline{g(x)} \, d\lambda^n(x).
+\end{equation}
+Zupełność przestrzeni $L^2$ (twierdzenie Riesza-Fischera) leży u podstaw nowoczesnej teorii równań różniczkowych cząstkowych, analizy Fouriera oraz mechaniki kwantowej.
+
+\subsubsection{3. Aksjomatyka rachunku prawdopodobieństwa Kołmogorowa}
+
+W 1933 roku A.~Kołmogorow oparł współczesną teorię prawdopodobieństwa bezpośrednio na teorii miary. W tym ujęciu:
+\begin{itemize}
+    \item Przestrzeń zdarzeń elementarnych $\Omega$ to zbiór mierzalny,
+    \item Zdarzenia losowe to elementy $\sigma$-algebry zbiorów mierzalnych,
+    \item Prawdopodobieństwo $P$ to unormowana miara ($\sigma$-addytywna funkcja zbioru o wartościach w $[0, 1]$, gdzie $P(\Omega) = 1$),
+    \item Zmienne losowe to funkcje mierzalne, a ich wartości oczekiwane to całki Lebesgue'a.
+\end{itemize}
+Miara Lebesgue'a na odcinku $[0, 1]$ stanowi kanoniczny model ciągłego rozkładu jednostajnego, na bazie którego konstruuje się dowolne procesy stochastyczne.
+
+\subsubsection{4. Analiza harmoniczna i grupy Liego (miara Haara)}
+
+Niezmienniczość miary Lebesgue'a względem translacji ($\lambda^n(x_0 + A) = \lambda^n(A)$) oznacza, że miara ta jest **miarą Haara** na abelowej grupie topologicznej $(\Rn, +)$. Własność ta umożliwia zdefiniowanie splotu funkcji:
+\begin{equation}
+    (f * g)(x) = \int_{\Rn} f(x - y) g(y) \, d\lambda^n(y)
+\end{equation}
+oraz transformacji Fouriera:
+\begin{equation}
+    \widehat{f}(\xi) = \int_{\Rn} f(x) e^{-2\pi i \langle x, \xi \rangle} \, d\lambda^n(x),
+\end{equation}
+będących głównymi narzędziami współczesnego przetwarzania sygnałów, tomografii oraz fizyki matematycznej.

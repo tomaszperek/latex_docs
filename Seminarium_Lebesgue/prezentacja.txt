@@ -1,0 +1,4 @@
+Na podstawie pracy nt miary Lebesgue'a potrzebuje zrobic prezentacje. 
+Co do formatu / przykladu prezentacji, to inna prezentacja, na temat Lematu Kuratowskiego-Zorna, znajduje sie w pliku Lemat_Kuratowskiego_Zorna.zip. 
+Dodatkowym wymogiem jest, by do kazdego rozdzialu prezentacji/pracy dodane byly "quizy dla sluchaczy" - 2-3 pytania z odpowiedziami typu tak/nie
+

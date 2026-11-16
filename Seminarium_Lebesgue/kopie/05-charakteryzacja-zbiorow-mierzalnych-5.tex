@@ -1,0 +1,267 @@
+\section{Charakteryzacja zbiorów mierzalnych w sensie Lebesgue'a}
+
+Konstrukcja Carathéodory'ego zakończyła się sukcesem: otrzymaliśmy zupełną przestrzeń z miarą przeliczalnie addytywną, a dzięki metryczności miary zewnętrznej wiemy, że wszystkie zbiory borelowskie są mierzalne. Sam warunek mierzalności~\eqref{eq:caratheodory_condition} ma jednak naturę abstrakcyjną — wymaga testowania danego zbioru względem wszystkich możliwych podzbiorów przestrzeni. W praktyce matematycznej rodzi to potrzebę znalezienia wewnętrznych, topologicznych kryteriów mierzalności. W tym rozdziale przekonamy się, że mierzalność w sensie Lebesgue'a to w istocie nic innego jak możliwość dowolnie dobrego przybliżania zbioru od zewnątrz zbiorami otwartymi, a od wewnątrz zbiorami domkniętymi lub zwartymi.
+
+\subsection{Podstawowe własności rodziny zbiorów mierzalnych}
+\begin{tw}[Własności algebraiczne $\Leb{\Rn}$]\label{tw:wlasnosci_L}
+    \leavevmode
+    \begin{enumerate}
+        \item Rodzina $\Leb{\Rn}$ jest $\sigma$-algebrą; w szczególności jest zamknięta na dopełnienia, przeliczalne sumy i przekroje, różnice $A \setminus B$ oraz różnice symetryczne $A \mathbin{\triangle} B$.
+        \item Miara $\lambda^n = \lambda^{*n}|_{\Leb{\Rn}}$ jest zupełna: jeżeli $\lambda^n(Z) = 0$, to każdy $E \subseteq Z$ należy do $\Leb{\Rn}$ i $\lambda^n(E) = 0$.
+        \item Każdy zbiór co najwyżej przeliczalny (np. $\Q^n$) jest mierzalny i ma miarę zero.
+    \end{enumerate}
+\end{tw}
+\begin{dow}
+    Punkty 1 i 2 to Twierdzenie~\ref{tw:caratheodory} zastosowane do $\phi = \lambda^{*n}$ (przekroje, różnice i różnice symetryczne wyrażają się przez dopełnienia i sumy). Punkt 3 wynika z Twierdzenia~\ref{tw:wlasnosci_zewn}(2) i punktu 2.
+\end{dow}
+
+\begin{fakt}[Relacje $\Leb{\Rn}$ z innymi klasami podzbiorów]
+    \[
+        \BorelRn \subsetneq \Leb{\Rn} \subsetneq \mathcal{P}(\Rn).
+    \]
+    Inkluzja $\BorelRn \subseteq \Leb{\Rn}$ została wykazana w rozdziale~4; jej właściwość wynika z Uwagi o mocy w podrozdziale~\ref{sec:struktura_uzupelnienia}. Druga inkluzja jest właściwa przy aksjomacie wyboru (zbiór Vitalego, podrozdział~\ref{sec:vitali}).
+\end{fakt}
+
+\subsection{Twierdzenie o równoważnych warunkach mierzalności}
+
+Poniższe twierdzenie stanowi jeden z najważniejszych rezultatów charakteryzacyjnych teorii miary Lebesgue'a w $\Rn$.
+
+\begin{tw}[Topologiczna charakteryzacja mierzalności]\label{tw:charakter_mierzalnosci}
+    Dla dowolnego zbioru $A \subset \Rn$ następujące warunki są parami równoważne:
+    \begin{enumerate}
+        \item[(1)] $A \in \Leb{\Rn}$ (zbiór $A$ jest mierzalny w sensie Lebesgue'a);
+        \item[(2)] dla każdego $\varepsilon > 0$ istnieje zbiór otwarty $G \subset \Rn$ taki, że:
+              \begin{equation*}
+                  A \subset G \quad \text{oraz} \quad \lambda^{*n}(G \setminus A) < \varepsilon;
+              \end{equation*}
+        \item[(3)] istnieje zbiór $B$ typu $G_\delta$ oraz zbiór $C$ o mierze Lebesgue'a zero ($\lambda^n(C) = 0$) takie, że:
+              \begin{equation*}
+                  A = B \setminus C;
+              \end{equation*}
+        \item[(4)] dla każdego $\varepsilon > 0$ istnieje zbiór domknięty $F \subset \Rn$ taki, że:
+              \begin{equation*}
+                  F \subset A \quad \text{oraz} \quad \lambda^{*n}(A \setminus F) < \varepsilon;
+              \end{equation*}
+        \item[(5)] istnieje zbiór $B$ typu $F_\sigma$ oraz zbiór $C$ o mierze Lebesgue'a zero ($\lambda^n(C) = 0$) takie, że:
+              \begin{equation*}
+                  A = B \cup C;
+              \end{equation*}
+        \item[(6)] istnieje zbiór $B$ będący sumą przeliczalnie wielu zbiorów zwartych ($\sigma$-zwarty) oraz zbiór $C$ o mierze Lebesgue'a zero taki, że:
+              \begin{equation*}
+                  A = B \cup C.
+              \end{equation*}
+    \end{enumerate}
+\end{tw}
+
+\begin{dow}
+    Wykażemy cykl implikacji: $(1) \implies (2) \implies (3) \implies (1)$ oraz $(1) \implies (4) \implies (5) \implies (6) \implies (1)$.
+
+    \paragraph{Implikacja $(1) \implies (2)$.}
+    Załóżmy najpierw, że $\lambda^n(A) < +\infty$. Z definicji zewnętrznej miary Lebesgue'a jako infimum sum objętości kostek otwartych (por. Uwaga~\ref{uwaga:pokrycia}) dla dowolnego $\varepsilon > 0$ istnieje ciąg kostek otwartych $\{Q_j\}_{j=1}^\infty$ taki, że $A \subset \bigcup_{j=1}^\infty Q_j$ oraz
+    \begin{equation*}
+        \sum_{j=1}^\infty V^n(Q_j) < \lambda^n(A) + \varepsilon.
+    \end{equation*}
+    Kładąc $G = \bigcup_{j=1}^\infty Q_j$, otrzymujemy zbiór otwarty zawierający $A$. Ponieważ $G \in \Borel{\Rn} \subset \Leb{\Rn}$ oraz $\lambda^n(A) < +\infty$, z addytywności miary mamy:
+    \begin{equation*}
+        \lambda^n(G \setminus A) = \lambda^n(G) - \lambda^n(A) \le \sum_{j=1}^\infty V^n(Q_j) - \lambda^n(A) < \varepsilon.
+    \end{equation*}
+
+    Gdy $\lambda^n(A) = +\infty$, wykorzystujemy $\sigma$-skończoność miary Lebesgue'a. Przestrzeń $\Rn$ jest sumą wstępującego ciągu kostek domkniętych $K_j = [-j, j]^n$. Zdefiniujmy warstwy mierzalne $A_j = A \cap (K_j \setminus K_{j-1})$ (przyjmując $K_0 = \emptyset$). Zbiory $A_j$ są parami rozłączne, $A = \bigcup_{j=1}^\infty A_j$ oraz $\lambda^n(A_j) < +\infty$.
+    Z pierwszej części dowodu dla każdego $j \in \N$ istnieje zbiór otwarty $G_j \supset A_j$ spełniający $\lambda^n(G_j \setminus A_j) < \varepsilon \cdot 2^{-j}$.
+    Definiując zbiór otwarty $G = \bigcup_{j=1}^\infty G_j$, otrzymujemy $A \subset G$ oraz:
+    \begin{equation*}
+        G \setminus A = \left(\bigcup_{j=1}^\infty G_j\right) \setminus \left(\bigcup_{j=1}^\infty A_j\right) \subset \bigcup_{j=1}^\infty (G_j \setminus A_j).
+    \end{equation*}
+    Z przeliczalnej podaddytywności miary:
+    \begin{equation*}
+        \lambda^n(G \setminus A) \le \sum_{j=1}^\infty \lambda^n(G_j \setminus A_j) < \sum_{j=1}^\infty \varepsilon \cdot 2^{-j} = \varepsilon.
+    \end{equation*}
+
+    \paragraph{Implikacja $(2) \implies (3)$.}
+    Dla każdego $k \in \N$, kładąc $\varepsilon = \frac{1}{k}$, dobieramy zbiór otwarty $G_k \supset A$ taki, że $\lambda^n(G_k \setminus A) < \frac{1}{k}$.
+    Zdefiniujmy:
+    \begin{equation*}
+        B := \bigcap_{k=1}^\infty G_k.
+    \end{equation*}
+    Zbiór $B$ jako przeliczalny przekrój zbiorów otwartych jest typu $G_\delta$ oraz oczywiście $A \subset B$. Ponadto dla każdego $k \in \N$ zachodzi inkluzja $B \setminus A \subset G_k \setminus A$, skąd:
+    \begin{equation*}
+        \lambda^{*n}(B \setminus A) \le \lambda^n(G_k \setminus A) < \frac{1}{k}.
+    \end{equation*}
+    Przechodząc do granicy $k \to \infty$, uzyskujemy $\lambda^{*n}(B \setminus A) = 0$. Zbiór $C := B \setminus A$ spełnia zatem $\lambda^n(C) = 0$, a z definicji różnicy zbiorów zachodzi tożsamość $A = B \setminus C$.
+
+    \paragraph{Implikacja $(3) \implies (1)$.}
+    Zbiór $B$ jako zbiór typu $G_\delta$ należy do $\sigma$-algebry borelowskiej $\Borel{\Rn} \subset \Leb{\Rn}$. Zbiór $C$ ma miarę zero, a zatem na mocy zupełności miary Lebesgue'a (Twierdzenie~\ref{tw:caratheodory}(ii)) należy do $\Leb{\Rn}$. Ponieważ $\Leb{\Rn}$ jest $\sigma$-algebrą, różnica $A = B \setminus C$ również należy do $\Leb{\Rn}$.
+
+    \paragraph{Implikacja $(1) \implies (4)$.}
+    Jeżeli $A \in \Leb{\Rn}$, to jego dopełnienie $A^c = \Rn \setminus A$ również należy do $\Leb{\Rn}$. Na mocy udowodnionej już równoważności $(1) \implies (2)$, dla ustalonego $\varepsilon > 0$ istnieje zbiór otwarty $G$ taki, że $A^c \subset G$ oraz $\lambda^n(G \setminus A^c) < \varepsilon$.
+    Przyjmijmy $F := G^c = \Rn \setminus G$. Wówczas $F$ jest zbiorem domkniętym. Ponadto z relacji inkluzji:
+    \begin{equation*}
+        A^c \subset G \iff G^c \subset A \iff F \subset A.
+    \end{equation*}
+    Wykorzystując tożsamość mnogościową $A \setminus F = A \cap F^c = A \cap G = G \cap (A^c)^c = G \setminus A^c$, otrzymujemy:
+    \begin{equation*}
+        \lambda^n(A \setminus F) = \lambda^n(G \setminus A^c) < \varepsilon.
+    \end{equation*}
+
+    \paragraph{Implikacja $(4) \implies (5)$.}
+    Dla każdego $k \in \N$ wybieramy zbiór domknięty $F_k \subset A$ spełniający $\lambda^n(A \setminus F_k) < \frac{1}{k}$.
+    Definiujemy:
+    \begin{equation*}
+        B := \bigcup_{k=1}^\infty F_k.
+    \end{equation*}
+    Zbiór $B$ jest przeliczalną sumą zbiorów domkniętych, czyli zbiorem typu $F_\sigma$, oraz $B \subset A$. Zauważmy, że dla każdego $k \in \N$ zachodzi $A \setminus B \subset A \setminus F_k$, co implikuje:
+    \begin{equation*}
+        \lambda^{*n}(A \setminus B) \le \lambda^n(A \setminus F_k) < \frac{1}{k}.
+    \end{equation*}
+    Przechodząc z $k \to \infty$, dostajemy $\lambda^n(A \setminus B) = 0$. Kładąc $C := A \setminus B$, otrzymujemy zbiór miary zero, dla którego zachodzi $A = B \cup C$.
+
+    \paragraph{Implikacja $(5) \implies (6)$.}
+    Niech $A = B \cup C$, gdzie $B = \bigcup_{j=1}^\infty F_j$ jest typu $F_\sigma$ ($F_j \in \mathrm{cotop}(\Rn)$), a $\lambda^n(C) = 0$.
+    Każdy zbiór domknięty $F_j$ można przedstawić w postaci sumy przeliczalnej zbiorów zwartych poprzez przecięcie z domkniętymi kulami o środku w zerze:
+    \begin{equation*}
+        F_j = \bigcup_{m=1}^\infty \left( F_j \cap \overline{B}(0, m) \right).
+    \end{equation*}
+    Zbiory $K_{j, m} := F_j \cap \overline{B}(0, m)$ są domknięte i ograniczone w $\Rn$, a więc na mocy twierdzenia Heinego-Borela zwarte. Podwójna suma przeliczalna $\bigcup_{j=1}^\infty \bigcup_{m=1}^\infty K_{j, m} = B$ stanowi przeliczalną sumę zbiorów zwartych, co dowodzi, że $B$ jest zbiorem $\sigma$-zwartym.
+
+    \paragraph{Implikacja $(6) \implies (1)$.}
+    Każdy zbiór zwarty jest domknięty, a więc borelowski. Przeliczalna suma zbiorów zwartych $B$ należy zatem do $\Borel{\Rn} \subset \Leb{\Rn}$. Ponieważ $\lambda^n(C) = 0$, z zupełności miary wynika mierzalność $C$. Ostatecznie suma $A = B \cup C$ należy do $\sigma$-algebry $\Leb{\Rn}$, co zamyka cały dowód.
+\end{dow}
+
+\subsection{Regularność miary Lebesgue'a}
+
+Bezpośrednią konsekwencją twierdzenia aproksymacyjnego jest regularność miary Lebesgue'a.
+
+\begin{defi}[Regularność miary]
+    Miarę $\mu$ określoną na $\sigma$-algebrze zawierającej zbiory borelowskie przestrzeni topologicznej nazywamy:
+    \begin{enumerate}
+        \item \textbf{zewnętrznie regularną}, jeżeli dla każdego zbioru mierzalnego $A$ zachodzi:
+              \begin{equation*}
+                  \mu(A) = \inf \{\mu(U) \colon U \text{ jest otwarty}, \; A \subset U\};
+              \end{equation*}
+        \item \textbf{wewnętrznie regularną}, jeżeli dla każdego zbioru mierzalnego $A$ zachodzi:
+              \begin{equation*}
+                  \mu(A) = \sup \{\mu(K) \colon K \text{ jest zwarty}, \; K \subset A\};
+              \end{equation*}
+        \item \textbf{regularną}, jeżeli jest jednocześnie zewnętrznie i wewnętrznie regularna.
+    \end{enumerate}
+\end{defi}
+
+\begin{tw}[Regularność miary Lebesgue'a]
+    Miara Lebesgue'a $\lambda^n$ w $\Rn$ jest miarą regularną.
+\end{tw}
+
+\begin{dow}
+    Zewnętrzna regularność wynika wprost z punktu (2) Twierdzenia~\ref{tw:charakter_mierzalnosci}: dla każdego $\varepsilon > 0$ istnieje zbiór otwarty $G \supset A$ taki, że $\lambda^n(G) \le \lambda^n(A) + \varepsilon$.
+
+    Aby wykazać regularność wewnętrzną, rozpatrzmy dwa przypadki:
+    \paragraph{Przypadek 1: $\lambda^n(A) < +\infty$.}
+    Na mocy punktu (4) Twierdzenia~\ref{tw:charakter_mierzalnosci} dla każdego $\varepsilon > 0$ istnieje zbiór domknięty $F \subset A$ taki, że $\lambda^n(A \setminus F) < \frac{\varepsilon}{2}$. Zbiór $F$ nie musi być ograniczony, lecz definiując ciąg zbiorów zwartych $K_m = F \cap \overline{B}(0, m)$, otrzymujemy $K_m \uparrow F$. Z ciągłości miary z dołu:
+    \begin{equation*}
+        \lim_{m \to \infty} \lambda^n(K_m) = \lambda^n(F) > \lambda^n(A) - \frac{\varepsilon}{2}.
+    \end{equation*}
+    Wybierając odpowiednio duży wskaźnik $m_0$, dostajemy zbiór zwarty $K := K_{m_0} \subset A$ o mierze $\lambda^n(K) > \lambda^n(A) - \varepsilon$, co dowodzi wewnętrznej regularności.
+
+    \paragraph{Przypadek 2: $\lambda^n(A) = +\infty$.}
+    Dla dowolnej stałej $M > 0$, rozważając zbiory $A_m = A \cap \overline{B}(0, m)$, mamy $A_m \uparrow A$, skąd $\lambda^n(A_m) \to +\infty$. Istnieje zatem wskaźnik $m_1$ taki, że $\lambda^n(A_{m_1}) > M$. Ponieważ $\lambda^n(A_{m_1}) < +\infty$, z Przypadku~1 możemy dobrać zbiór zwarty $K \subset A_{m_1} \subset A$ spełniający $\lambda^n(K) \ge \lambda^n(A_{m_1}) - 1 > M - 1$. Z dowolności $M$ wynika, że supremum po zbiorach zwartych wynosi $+\infty$.
+\end{dow}
+
+\subsection{$\sigma$-algebra Lebesgue'a jako uzupełnienie $\sigma$-algebry borelowskiej}\label{sec:struktura_uzupelnienia}
+
+Jednym z fundamentalnych wniosków charakteryzacyjnych jest precyzyjny opis relacji algebraicznej między $\Borel{\Rn}$ a $\Leb{\Rn}$.
+
+\begin{tw}[Struktura uzupełnienia]
+    $\sigma$-algebra zbiorów mierzalnych w sensie Lebesgue'a $\Leb{\Rn}$ jest uzupełnieniem $\sigma$-algebry borelowskiej $\Borel{\Rn}$ względem miary borelowskiej $\lambda^n|_{\BorelRn}$, to znaczy:
+    \begin{equation*}
+        \Leb{\Rn} = \{B \cup Z \colon B \in \Borel{\Rn}, \; \exists N \in \Borel{\Rn} \text{ taki, że } Z \subseteq N, \, \lambda^n(N) = 0\}.
+    \end{equation*}
+    Równoważnie, każdy zbiór mierzalny $A \in \Leb{\Rn}$ można przedstawić w postaci różnicy symetrycznej:
+    \begin{equation*}
+        A = B \mathbin{\triangle} Z, \quad \text{gdzie } B \in \Borel{\Rn}, \; \lambda^{*n}(Z) = 0.
+    \end{equation*}
+\end{tw}
+
+\begin{dow}
+    Inkluzja $\supseteq $ wynika bezpośrednio z faktu, że $\mathcal{B}(\Rn) \subseteq \Leb{\Rn}$ oraz zupełności przestrzeni $(\Rn, \Leb{\Rn}, \lambda^n)$.
+    Inkluzja przeciwna $\subseteq$: na mocy punktu (5) Twierdzenia~\ref{tw:charakter_mierzalnosci} każdy zbiór $A \in \Leb{\Rn}$ ma postać $A = B \cup C$, gdzie $B$ jest typu $F_\sigma$ (więc $B \in \BorelRn$), a $\lambda^n(C) = 0$. Stosując do zbioru $C$ implikację $(1) \implies (3)$, otrzymujemy zbiór $N$ typu $G_\delta$ oraz zbiór $C'$ miary zero takie, że $C = N \setminus C'$. Wtedy $C \subseteq N$, $N \in \BorelRn$ oraz $\lambda^n(N) \mlr \lambda^n(C) + \lambda^n(C') = 0$.
+\end{dow}
+
+\begin{uwaga}[Kwestia mocy rodzin zbiorów]
+    Mimo że różnica algebraiczna między $\Borel{\Rn}$ a $\Leb{\Rn}$ dotyczy wyłącznie podzbiorów zbiorów miary zero, pod względem teoriomnogościowym jest ona ogromna:
+    \begin{enumerate}
+        \item Moc $\sigma$-algebry borelowskiej wynosi continuum: $\#\Borel{\Rn} = \mathfrak{c}$.
+        \item Konstruując klasyczny trójkowy zbiór Cantora $C \subset \R$, otrzymujemy zbiór domknięty o mierze Lebesgue'a $\lambda^1(C) = 0$ i mocy continuum $\#C = \mathfrak{c}$. Z zupełności miary Lebesgue'a wynika, że każdy z podzbiorów zbioru Cantora jest mierzalny ($\mathcal{P}(C) \subset \Leb{\R}$). Dla $n \wlr 2$ to samo rozumowanie stosujemy do zbioru $C \times [0, 1]^{n-1} \subset \Rn$, który również ma miarę zero i moc continuum. Ponieważ $\#\mathcal{P}(C) = 2^\mathfrak{c} > \mathfrak{c}$ oraz $\Leb{\Rn} \subseteq \mathcal{P}(\Rn)$ ma moc co najwyżej $2^\mathfrak{c}$, zachodzi:
+              \begin{equation*}
+                  \#\Leb{\Rn} = 2^\mathfrak{c}.
+              \end{equation*}
+              W konsekwencji istnieją zbiory mierzalne w sensie Lebesgue'a, które nie są zbiorami borelowskimi ($\Borel{\Rn} \subsetneq \Leb{\Rn}$).
+    \end{enumerate}
+\end{uwaga}
+
+\subsection{Granice mierzalności: konstrukcja zbioru Vitalego}\label{sec:vitali}
+
+Naturalnym pytaniem po skonstruowaniu zupełnej miary jest: czy każdy podzbiór $\Rn$ jest mierzalny w sensie Lebesgue'a ($\Leb{\Rn} \stackrel{?}{=} \mathcal{P}(\Rn)$)? Odpowiedź jest negatywna, co jako pierwszy wykazał G.~Vitali w 1905 roku, wykorzystując aksjomat wyboru.
+
+\begin{tw}[Istnienie zbiorów niemierzalnych w sensie Lebesgue'a]\label{tw:vitali}
+    Przy założeniu aksjomatu wyboru istnieje podzbiór odcinka $[0, 1]$, który nie jest mierzalny w sensie Lebesgue'a:
+    \begin{equation*}
+        \Leb{\R} \subsetneq \mathcal{P}(\R).
+    \end{equation*}
+\end{tw}
+
+\begin{dow}
+    W zbiorze liczb rzeczywistych $\R$ wprowadzamy relację równoważności $\sim$ zadaną wzorem:
+    \begin{equation*}
+        x \sim y \iff x - y \in \Q.
+    \end{equation*}
+    Relacja ta dzieli odcinek $[0, 1]$ na rozłączne klasy abstrakcji $[x]_\sim = (x + \Q) \cap [0, 1]$.
+
+    Na mocy \textbf{aksjomatu wyboru} istnieje zbiór $V \subset [0, 1]$ zawierający dokładnie po jednym reprezentancie z każdej klasy abstrakcji relacji $\sim$ zawartej w $[0, 1]$. Zbiór $V$ nazywamy \textbf{zbiorem Vitalego}.
+
+    Niech $\{r_k\}_{k=1}^\infty$ będzie ciągiem wszystkich liczb wymiernych należących do przedziału $[-1, 1]$, przy czym $r_j \neq r_k$ dla $j \neq k$. Zdefiniujmy ciąg przesunięć zbioru $V$:
+    \begin{equation*}
+        V_k := V + r_k = \{v + r_k \colon v \in V\}.
+    \end{equation*}
+
+    \paragraph{Krok 1: Rozłączność rodziny $\{V_k\}$.}
+    Przypuśćmy przeciwnie, że istnieją wskaźniki $j \neq k$ oraz punkt $x \in V_j \cap V_k$. Wówczas istnieją elementy $v_1, v_2 \in V$ takie, że $x = v_1 + r_j = v_2 + r_k$. Stąd:
+    \begin{equation*}
+        v_1 - v_2 = r_k - r_j \in \Q,
+    \end{equation*}
+    co oznacza, że $v_1 \sim v_2$. Ponieważ zbiór $V$ zawiera tylko jednego reprezentanta z każdej klasy abstrakcji, musi zachodzić $v_1 = v_2$, skąd $r_j = r_k$, co przeczy założeniu $j \neq k$. Rodzina $\{V_k\}_{k=1}^\infty$ składa się zatem ze zbiorów parami rozłącznych.
+
+    \paragraph{Krok 2: Oszacowania inkluzji.}
+    Wykażemy następujące zawierania:
+    \begin{equation}\label{eq:vitali_inclusions}
+        [0, 1] \subset \bigcup_{k=1}^\infty V_k \subset [-1, 2].
+    \end{equation}
+    Druga inkluzja jest oczywista: skoro $V \subset [0, 1]$ oraz $r_k \in [-1, 1]$, to dla każdego $k$:
+    \begin{equation*}
+        V_k \subset [0 + (-1), 1 + 1] = [-1, 2].
+    \end{equation*}
+    Aby dowieść pierwszej inkluzji, weźmy dowolny punkt $x \in [0, 1]$. Punkt ten należy do pewnej klasy abstrakcji, więc istnieje reprezentant $v \in V$ taki, że $x \sim v$, czyli $x - v = q \in \Q$. Ponieważ $x, v \in [0, 1]$, mamy:
+    \begin{equation*}
+        -1 \le x - v \le 1 \implies q \in \Q \cap [-1, 1].
+    \end{equation*}
+    Zatem $q = r_{k_0}$ dla pewnego $k_0 \in \N$, co oznacza, że $x = v + r_{k_0} \in V_{k_0}$, dowodząc lewej inkluzji w~\eqref{eq:vitali_inclusions}.
+
+    \paragraph{Krok 3: Sprzeczność z przeliczalną addytywnością.}
+    Przypuśćmy, że zbiór $V$ jest mierzalny w sensie Lebesgue'a ($V \in \Leb{\R}$).
+    Miara zewnętrzna $\lambda^{*1}$ jest niezmiennicza na translacje (Twierdzenie~\ref{tw:wlasnosci_zewn}), więc warunek Carathéodory'ego~\eqref{eq:caratheodory_condition} zachowuje się przy przesunięciach. Zatem każdy ze zbiorów $V_k$ jest mierzalny oraz:
+    \begin{equation*}
+        \lambda^1(V_k) = \lambda^1(V + r_k) = \lambda^1(V).
+    \end{equation*}
+    Ponieważ zbiory $V_k$ są parami rozłączne, z monotoniczności i przeliczalnej addytywności miary Lebesgue'a zastosowanej do inkluzji~\eqref{eq:vitali_inclusions} otrzymujemy:
+    \begin{equation*}
+        \lambda^1([0, 1]) \le \lambda^1\left(\bigcup_{k=1}^\infty V_k\right) \le \lambda^1([-1, 2]),
+    \end{equation*}
+    co daje:
+    \begin{equation*}
+        1 \le \sum_{k=1}^\infty \lambda^1(V_k) \le 3 \iff 1 \le \sum_{k=1}^\infty \lambda^1(V) \le 3.
+    \end{equation*}
+    Rozpatrzmy dwie możliwe wartości $\lambda^1(V)$:
+    \begin{itemize}
+        \item Jeśli $\lambda^1(V) = 0$, to $\sum_{k=1}^\infty \lambda^1(V) = 0$, skąd otrzymujemy $1 \le 0$ — sprzeczność.
+        \item Jeśli $\lambda^1(V) > 0$, to $\sum_{k=1}^\infty \lambda^1(V) = +\infty$, skąd otrzymujemy $+\infty \le 3$ — sprzeczność.
+    \end{itemize}
+    Sprzeczność ta dowodzi, że zbiór $V$ nie może należeć do $\Leb{\R}$.
+\end{dow}
