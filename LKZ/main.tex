@@ -1,0 +1,280 @@
+
+\documentclass[aspectratio=169,11pt,t,envcountsect,professionalfonts]{beamer}
+\usepackage[main=polish,shorthands=off]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+
+\makeatletter
+\def\input@path{{styles/}}
+\makeatother
+
+
+\usepackage[autostyle]{csquotes}
+\usepackage[
+  backend=biber,
+  style=numeric,
+  maxbibnames=3,
+  giveninits=true,
+  doi=false,
+  isbn=false,
+  url=false,
+]{biblatex}
+\addbibresource{refs.bib}
+\renewcommand*{\bibfont}{\footnotesize}
+
+\input{macros}
+
+\graphicspath{{figures/}}
+
+% The optional argument is the short title used in the footline.
+\title[Lemat Kuratowskiego-Zorna]{Lemat Kuratowskiego-Zorna}
+\subtitle{Podstawy Aksjomatycznej Teorii Mnogości}
+\author{Tomasz Perek}
+\institute{Matematyka zaoczna III rok\\ UKSW}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}[plain,t,noframenumbering]
+  \titlepage
+\end{frame}
+
+
+\begin{frame}[allowframebreaks]{Porządki częściowe i relacje}
+  \begin{mydef}[Częściowy porządek]
+  \textbf{Częściowy porządek} to relacja $<$ na zbiorze $X$,  zwrotna, przechodnia i słabo antysymetryczna
+  \end{mydef}
+  \begin{mydef}[Łańcuch]
+  \textbf{Łańcuchem} nazywamy podzbiór $L \subseteq X$ liniowo uporządkowany przez $<$ (każde dwa elementy w $L$ są porównywalne)
+  \end{mydef}
+
+  \begin{mydef}[Ograniczenie górne]
+  \textbf{Ograniczeniem górnym} (majorantą) nazywamy element $M \in X$ taki, że $\forall x \in A: x < M$
+  \end{mydef}
+
+  \begin{mydef}[Kres górny]
+  \textbf{Kresem górnym} zbioru A ($\sup A$) nazywamy najmniejsze ograniczenie górne zbioru $A$
+  \end{mydef}
+    
+\end{frame}
+
+\begin{frame}{Element największy a element maksymalny}
+\begin{mydef}[Maksimum]
+    \textbf{Elementem największym (maksimum)} nazywamy $x_0 \in X$ taki, że $\forall x \in X: x \le x_0$. Jeśli istnieje, jest dokładnie jeden
+\end{mydef}
+\begin{mydef}[Element maksymalny]
+    \textbf{Elementem maksymalnym} nazywamy $m \in X$ taki, że dla dowolnego $x \in X$, warunek $m < x$ implikuje $m = x$ (zaden element z X nie jest od niego ściśle większy)
+\end{mydef}
+
+Kluczowa różnica: W porządku częściowym elementów maksymalnych może być wiele, może nie być żadnego, a istnienie elementu maksymalnego nie gwarantuje istnienia maksimum (np. rodzina podzbiorów $\{1, 2\}$ bez zbioru pełnego).
+    
+\end{frame}
+
+\begin{frame}{Lemat Kuratowskiego-Zorna}
+
+\begin{mythm}[Lemat Kuratowskiego-Zorna]
+Niech $(X, \leqslant)$ będzie niepustym zbiorem częściowo uporządkowanym, w którym każdy łańcuch ma ograniczenie górne w $X$. Wówczas w zbiorze $(X, \leqslant)$ istnieje element maksymalny
+\end{mythm}
+\begin{mythm}[LKZ - wersja dualna (zasada minimalności)]
+Jeśli każdy łańcuch ma ograniczenie dolne, to w $X$ istnieje element minimalny
+\end{mythm}
+
+\textbf{Istotność założeń}: Ograniczenie górne musi należeć do $X$ (kontrprzykład: $X = (0, 1)$ z naturalnym porządkiem – łańcuch $\{1 - 1/n\}$ nie ma majoranty w $X$ i brak elementu maksymalnego)
+
+\end{frame}
+
+\begin{frame}{Historia odkrycia i pozycja w literaturze}
+\begin{itemize}
+    
+\item \textbf{Kazimierz Kuratowski (1922)}: Sformułował i opublikował zasadę maksymalności w \textit{Fundamenta Mathematicae} w kontekście uogólnień \textbf{lematu Hausdorffa}.
+
+\item \textbf{Max Zorn (1935)}: Odkrył lemat niezależnie, wskazując jego potężne zastosowania w algebrze abstrakcyjnej.
+
+\item \textbf{Dlaczego „Zorn's Lemma” vs „Lemat Kuratowskiego-Zorna”?} W literaturze zachodniej i anglosaskiej utrwaliła się nazwa \textbf{Zorn's Lemma} (głównie za sprawą szkoły Bourbakiego i podręczników algebry), podczas gdy w polskiej tradycji matematycznej sprawiedliwie wymienia się obu autorów.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Równoważność z Aksjomatem Wyboru}
+\begin{itemize}
+    \item 
+    Na gruncie aksjomatów Zermelo-Fraenkla ($\text{ZF}$) zachodzi równoważność:
+    \begin{align*}
+        & \text{Aksjomat Wyboru } (AC) \\
+        &\iff \text{Lemat Kuratowskiego-Zorna } (LKZ) \\
+        &\iff \text{Twierdzenie Zermelo o dobrym uporządkowaniu}
+    \end{align*}
+    \item LKZ jest wygodnym, „bezindukcyjnym” odpowiednikiem $AC$ – pozwala uniknąć mozolnych konstrukcji pozaskończonych i od razu orzeka istnienie obiektu granicznego.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Jak matematycy używają Lematu Zorna?}
+
+    \begin{itemize}
+        \item Krok 1 (Konstrukcja rodziny): Zdefiniuj rodzinę obiektów $\mathcal{F}$ spełniających żądaną własność częściową, uporządkowaną przez inkluzję $\subseteq$
+        \item Krok 2 (Weryfikacja założeń): Weź dowolny łańcuch $\mathcal{L} \subseteq \mathcal{F}$. Pokaż, że jego suma $\bigcup \mathcal{L}$ zachowuje zadaną własność i leży w $\mathcal{F}$ (stanowi ograniczenie górne łańcucha)
+        \item Krok 3 (Maksymalność): Zastosuj LKZ, aby uzyskać element maksymalny $M \in \mathcal{F}$, a następnie nie wprost wykaż, że $M$ musi być obiektem globalnym
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Przykład zastosowania LKZ}
+
+\begin{mythm}
+    Każda przestrzeń liniowa $V$ nad ciałem $K$ posiada bazę (układ liniowo niezależny generujący $V$).
+\end{mythm}
+\begin{itemize}
+    \item \textbf{Krok 1: Konstrukcja rodziny} $\mathcal{F}$
+  Rozważmy rodzinę wszystkich podzbiorów liniowo niezależnych w $(V)$:
+      \begin{itemize}
+          \item $\mathcal{F} = \{ A \subseteq V : A \text{ jest liniowo niezależny} \}$
+          \item Częściowy porządek: relacja inkluzji $\subseteq$.
+          \item Rodzina jest niepusta, bo $\emptyset \in \mathcal{F}$ (lub $\{v\} \in \mathcal{F}$ dla $v \neq 0$).
+      \end{itemize}
+
+    \item \textbf{Krok 2}: Weryfikacja założeń LKZ (Suma łańcucha)
+    \begin{itemize}
+        \item Niech $\mathcal{L} \subseteq \mathcal{F}$ będzie dowolnym łańcuchem. Kandydatem na ograniczenie górne jest $U = \bigcup \mathcal{L}$.
+        \item Czy $U \in \mathcal{F}$? Jeśli weźmiemy dowolną skończoną kombinację liniową $\sum_{i=1}^n \alpha_i v_i = 0$ dla $v_i \in U$, to każdy $v_i$ należy do pewnego $A_i \in \mathcal{L}$.
+        \item Ponieważ $\mathcal{L}$ jest łańcuchem (porządkiem liniowym), w zbiorze $\{A_1, \dots, A_n\}$ istnieje element największy $A_{\max}$. Zatem wszystkie wektory $v_1, \dots, v_n \in A_{\max}$.
+        \item Skoro $A_{\max} \in \mathcal{F}$ jest liniowo niezależny, to $\alpha_1 = \dots = \alpha_n = 0$. Wobec tego $U \in \mathcal{F}$ i stanowi ograniczenie górne łańcucha $\mathcal{L}$.
+    \end{itemize}
+
+    \item \textbf{Krok 3}: Zastosowanie LKZ i wniosek
+        Z Lematu Kuratowskiego-Zorna istnieje element maksymalny $B \in \mathcal{F}$.
+        Czy $B$ generuje $V$?
+        \begin{itemize}
+            \item   Przypuśćmy nie wprost, że $\operatorname{span}(B) \neq V$. Wtedy istnieje wektor $v \in V \setminus \operatorname{span}(B)$.
+            \item Zbiór $B \cup \{v\}$ jest liniowo niezależny, więc $B \cup \{v\} \in \mathcal{F}$.
+            \item Ponieważ $B \subsetneq B \cup \{v\}$, przeczy to maksymalności $B$ w $\mathcal{F}$.
+            \item Zatem $B$ generuje $V$ i jest liniowo niezależny, czyli jest bazą $V$. $\blacksquare$
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+\begin{frame}{Alternatywny miniprzykład}
+    \begin{mythm}[Szpilrajna (Marczewskiego) o rozszerzaniu porządku częściowego do liniowego]
+     Każdy częściowy porządek na danym zbiorze można rozszerzyć (przedłużyć) do porządku liniowego na tym zbiorze   
+    \end{mythm}
+\begin{enumerate}
+
+    \item $\mathcal{F}$ to rodzina wszystkich porządków częściowych na $X$ przedłużających dany porządek $<$, uporządkowana przez inkluzję $\subseteq$.
+    \item Suma łańcucha porządków jest poprawnym porządkiem częściowym.
+    \item Element maksymalny musi być porządkiem liniowym — gdyby istniały elementy nieporównywalne $a, b$, można by go ściśle powiększyć o parę $(a, b)$, co przeczyłoby maksymalności.
+\end{enumerate}   
+\end{frame}
+\begin{frame}{Inne twierdzenia używające LKZ w dowodzie}
+\begin{itemize}
+    \item Algebra abstrakcyjna: Każdy pierścień z jedynką posiada ideał maksymalny (twierdzenie Krulla)
+    \item Twierdzenie o dychotomii mocy ($|X| \leqslant |Y|$ lub $|Y| \leqslant |X|$)
+    \item Topologia i analiza funkcjonalna: Twierdzenie Tichonowa o produkcie przestrzeni zwartych (produkt  dowolnej rodziny zwartych przestrzeni topologicznych jest przestrzenią zwartą) oraz twierdzenie Hahna-Banacha
+\end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Architektura dowodu}
+\begin{itemize}
+    \item Twierdzenie o punkcie stałym dla funkcji inflacyjnych ($x \leqslant f(x)$) na zbiorach z kresami górnymi łańcuchów
+    \item Wersja słabsza LKZ (z kresami górnymi łańcuchów) wyprowadzona przy użyciu twierdzenia wyżej i $AC$
+    \item Twierdzenie Hausdorffa o łańcuchu maksymalnym
+    \item Pełny Lemat Kuratowskiego-Zorna jako wniosek z twierdzenia Hausdorffa
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Twierdzenie o punkcie stałym}
+\begin{mythm}
+    Jeśli w $(X, \leqslant)$ każdy łańcuch ma kres górny, to każda funkcja $f: X \to X$ spełniająca $x \leqslant f(x)$ dla każdego $x \in X$ ma punkt stały: $\exists x^* \in X: f(x^*) = x^*$
+\end{mythm}
+\begin{proof}
+    \begin{itemize}
+        \item  $\emptyset$ jest łańcuchem, więc istnieje najmniejszy element $a = \sup \emptyset$
+        \item Rozważa się rodzinę podzbiorów $\mathcal{A} \subseteq \mathcal{P}(X)$ zawierających $a$, zamkniętych na $f$ oraz na kresy górne swoich podłańcuchów.
+        \item Najmniejszy taki zbiór $A^* = \bigcap \mathcal{A}$ okazuje się być sam łańcuchem.
+        \item Wtedy $x^* = \sup A^*$ spełnia $f(x^*) \le x^*$, co wraz z $x^* \le f(x^*)$ daje $f(x^*) = x^*$2
+    \end{itemize}
+\end{proof}
+\end{frame}
+
+\begin{frame}{"Słabszy" LKZ i wejście Aksjomatu Wyboru}
+    \begin{mythm}
+        Jeśli $(X, \leqslant)$ jest zbiorem uporządkowanym, w którym każdy łańcuch ma kres górny, to w $X$ istnieje element maksymalny.
+    \end{mythm}
+    \begin{proof}
+        \begin{itemize}
+            \item Przypuśćmy, że w $X$ nie ma elementu maksymalnego.
+            \item Wtedy dla każdego $x \in X$ zbiór $A_x = \{y \in X : x < y\}$ jest niepusty.
+            \item Zastosowanie $AC$: Istnieje funkcja wyboru dobierająca z każdego $A_x$ element $f(x) \in A_x$, czyli $x < f(x)$ dla każdego $x \in X$.
+            \item Na mocy poprzedniego twierdzenia funkcja ta musi mieć punkt stały $x^* = f(x^*)$, co przeczy nierówności $x^* < f(x^*)$
+        \end{itemize}
+    \end{proof}
+\end{frame}
+
+\begin{frame}{Dygresja: $AC \iff LKZ $}
+    \begin{block}{$\text{AC} \implies \text{LKZ}$} 
+        \begin{itemize} 
+            \item Aksjomat wyboru został użyty do dowodu "Słabszego LKZ"
+        \end{itemize} 
+    \end{block} 
+    \begin{block}{$\text{LKZ} \implies \text{AC}$ (Konstrukcja funkcji wyboru z LKZ)} 
+        \begin{itemize} 
+            \item Niech $\mathcal{R}$ będzie rodziną zbiorów niepustych i rozłącznych. 
+            \item Rozważmy rodzinę $\mathcal{A} \subseteq \mathcal{P}(\bigcup \mathcal{R})$ selektorów częściowych: 
+            $$\mathcal{A} = \{ A \subseteq \bigcup \mathcal{R} : \forall R \in \mathcal{R},\ |A \cap R| \le 1 \} $$ uporządkowaną przez relację inkluzji $\subseteq$. 
+            \item Suma dowolnego łańcucha w $\mathcal{A}$ należy do $\mathcal{A}$ (założenie LKZ spełnione). 
+            \item Element maksymalny $A^* \in \mathcal{A}$ musi spełniać $|A^* \cap R| = 1$ dla każdego $R \in \mathcal{R}$ (inaczej powiększamy $A^*$ o element z pominiętego zbioru). Zbiór $A^*$ zadaje funkcję wyboru! 
+        \end{itemize} 
+    \end{block} 
+\end{frame}
+    
+
+\begin{frame}{Twierdzenie Hausdorffa}
+    \begin{mythm}[Hausdorffa]
+        W każdym zbiorze częściowo uporządkowanym $(X, \leqslant)$ istnieje łańcuch maksymalny (w sensie relacji zawierania $\subseteq$)
+    \end{mythm}
+    \begin{proof}
+        \begin{itemize}
+            \item Niech $\mathcal{L}$ będzie rodziną wszystkich łańcuchów w $(X, \le)$ uporządkowaną przez $\subseteq$
+            \item Dla dowolnego łańcucha rodzin $\mathcal{M} \subseteq \mathcal{L}$, zbiór $\bigcup \mathcal{M}$ jest łańcuchem w $X$ i stanowi kres górny rodziny $\mathcal{M}$ w $(\mathcal{L}, \subseteq)$
+            \item Zatem $(\mathcal{L}, \subseteq)$ spełnia założenia poprzedniego twierdzenia ("Słabszy LKZ")  $\implies$ w $\mathcal{L}$ istnieje element maksymalny $L$
+        \end{itemize}
+    \end{proof}
+\end{frame}
+
+\begin{frame}{Dowód Lematu Kuratowskiego-Zorna}
+    \begin{mythm}[Lemat Kuratowskiego-Zorna]
+        Niech $(X, \leqslant)$ będzie niepustym zbiorem częściowo uporządkowanym, w którym każdy łańcuch ma ograniczenie górne w $X$. Wówczas w zbiorze $(X, \leqslant)$ istnieje element maksymalny
+    \end{mythm}
+    \begin{proof}
+        \begin{itemize}
+            \item Założenie: Każdy łańcuch w $(X, \leqslant)$ ma ograniczenie górne
+            \item Krok 1: Z twierdzenia Hausdorffa wybieramy w $X$ łańcuch maksymalny $L$4
+            \item Krok 2: Z założenia LKZ łańcuch $L$ posiada ograniczenie górne $a \in X$
+            \item Krok 3: Wykazujemy, że $a$ jest elementem maksymalnym w całym $X$: Z maksymalności $L$ wynika, że $a \in L$
+            \item Gdyby istniał $x \in X$ taki, że $a < x$, to zbiór $L \cup \{x\}$ byłby łańcuchem ściśle zawierającym $L$, co przeczyłoby maksymalności $L$
+            \item Zatem $a$ jest elementem maksymalnym w $X$
+        \end{itemize}
+    \end{proof}
+\end{frame}
+\begin{frame}{Podsumowanie i wnioski}
+\begin{itemize}
+    \item Lemat Kuratowskiego-Zorna to jedno z najpotężniejszych narzędzi współczesnej matematyki eliminujące potrzebę żmudnej indukcji pozaskończonej.
+    \item Dowód przez twierdzenie o punkcie stałym i twierdzenie Hausdorffa pokazuje ścisłą, elegancką strukturę teorii porządków
+    \item Wszędzie tam, gdzie konstruujemy obiekty nieskończone „krok po kroku bez przeszkód”, LKZ gwarantuje istnienie obiektu docelowego
+\end{itemize}
+    
+\end{frame}
+
+% koniec
+\begin{frame}{Bibliografia}
+
+\nocite{*} 
+
+\printbibliography
+    
+\end{frame}
+\end{document}
