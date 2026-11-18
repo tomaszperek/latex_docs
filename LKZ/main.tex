@@ -48,14 +48,14 @@
 
 \begin{frame}[allowframebreaks]{Porządki częściowe i relacje}
   \begin{mydef}[Częściowy porządek]
-  \textbf{Częściowy porządek} to relacja $<$ na zbiorze $X$,  zwrotna, przechodnia i słabo antysymetryczna
+  \textbf{Częściowy porządek} to relacja $\leqslant$ na zbiorze $X$,  zwrotna, przechodnia i słabo antysymetryczna
   \end{mydef}
   \begin{mydef}[Łańcuch]
-  \textbf{Łańcuchem} nazywamy podzbiór $L \subseteq X$ liniowo uporządkowany przez $<$ (każde dwa elementy w $L$ są porównywalne)
+  \textbf{Łańcuchem} nazywamy podzbiór $L \subseteq X$ liniowo uporządkowany przez $\leqslant$ (każde dwa elementy w $L$ są porównywalne)
   \end{mydef}
 
   \begin{mydef}[Ograniczenie górne]
-  \textbf{Ograniczeniem górnym} (majorantą) nazywamy element $M \in X$ taki, że $\forall x \in A: x < M$
+  \textbf{Ograniczeniem górnym} (majorantą) nazywamy element $M \in X$ taki, że $\forall x \in A: x \leqslant M$
   \end{mydef}
 
   \begin{mydef}[Kres górny]
@@ -66,10 +66,10 @@
 
 \begin{frame}{Element największy a element maksymalny}
 \begin{mydef}[Maksimum]
-    \textbf{Elementem największym (maksimum)} nazywamy $x_0 \in X$ taki, że $\forall x \in X: x \le x_0$. Jeśli istnieje, jest dokładnie jeden
+    \textbf{Elementem największym (maksimum)} nazywamy $x_0 \in X$ taki, że $\forall x \in X: x \leqslant x_0$. Jeśli istnieje, jest dokładnie jeden
 \end{mydef}
 \begin{mydef}[Element maksymalny]
-    \textbf{Elementem maksymalnym} nazywamy $m \in X$ taki, że dla dowolnego $x \in X$, warunek $m < x$ implikuje $m = x$ (zaden element z X nie jest od niego ściśle większy)
+    \textbf{Elementem maksymalnym} nazywamy $m \in X$ taki, że dla dowolnego $x \in X$, warunek $m \leqslant x$ implikuje $m = x$ (żaden element z X nie jest od niego ściśle większy)
 \end{mydef}
 
 Kluczowa różnica: W porządku częściowym elementów maksymalnych może być wiele, może nie być żadnego, a istnienie elementu maksymalnego nie gwarantuje istnienia maksimum (np. rodzina podzbiorów $\{1, 2\}$ bez zbioru pełnego).
@@ -130,7 +130,7 @@ Jeśli każdy łańcuch ma ograniczenie dolne, to w $X$ istnieje element minimal
 \end{mythm}
 \begin{itemize}
     \item \textbf{Krok 1: Konstrukcja rodziny} $\mathcal{F}$
-  Rozważmy rodzinę wszystkich podzbiorów liniowo niezależnych w $(V)$:
+  Rozważmy rodzinę wszystkich podzbiorów liniowo niezależnych w $V$:
       \begin{itemize}
           \item $\mathcal{F} = \{ A \subseteq V : A \text{ jest liniowo niezależny} \}$
           \item Częściowy porządek: relacja inkluzji $\subseteq$.
@@ -192,10 +192,33 @@ Jeśli każdy łańcuch ma ograniczenie dolne, to w $X$ istnieje element minimal
 \end{mythm}
 \begin{proof}
     \begin{itemize}
-        \item  $\emptyset$ jest łańcuchem, więc istnieje najmniejszy element $a = \sup \emptyset$
-        \item Rozważa się rodzinę podzbiorów $\mathcal{A} \subseteq \mathcal{P}(X)$ zawierających $a$, zamkniętych na $f$ oraz na kresy górne swoich podłańcuchów.
-        \item Najmniejszy taki zbiór $A^* = \bigcap \mathcal{A}$ okazuje się być sam łańcuchem.
-        \item Wtedy $x^* = \sup A^*$ spełnia $f(x^*) \le x^*$, co wraz z $x^* \le f(x^*)$ daje $f(x^*) = x^*$2
+        \item $\emptyset$ jest łańcuchem, więc istnieje $a = \sup \emptyset$ -- element najmniejszy w $X$
+        \item Niech $\mathcal{A} \subseteq \mathcal{P}(X)$ będzie rodziną zbiorów $A$ takich, że: (a) $a \in A$, \ (b) $f[A] \subseteq A$, \ (c) $\sup L \in A$ dla każdego łańcucha $L \subseteq A$
+        \item $X \in \mathcal{A}$, a $A^* = \bigcap \mathcal{A}$ spełnia (a), (b), (c), więc $A^*$ jest najmniejszym elementem $\mathcal{A}$
+        \item \textbf{Cel:} $A^*$ jest łańcuchem
+        \item Niech $B = \{x \in A^* : \forall y \in A^*\ (y < x \Rightarrow f(y) \leqslant x)\}$. Pokażemy, że $B \in \mathcal{A}$; wtedy $A^* \subseteq B$, czyli $B = A^*$
+    \end{itemize}
+\end{proof}
+\end{frame}
+
+\begin{frame}{Twierdzenie o punkcie stałym (cd.)}
+\begin{proof}[Dowód (cd.)]
+    \begin{itemize}
+        \item Dla $x \in B$ niech $B_x = \{z \in A^* : z \leqslant x \ \text{lub} \ f(x) \leqslant z\}$
+        \item $B_x \in \mathcal{A}$: $a \in B_x$; dla (b) rozważamy $z < x$ (z def. $B$: $f(z) \leqslant x$), $z = x$ oraz $f(x) \leqslant z$ (wtedy $f(x) \leqslant z \leqslant f(z)$); dla (c) albo wszystkie $z \in L$ są $\leqslant x$, albo $f(x) \leqslant z \leqslant \sup L$ dla pewnego $z \in L$
+        \item Zatem $B_x = A^*$, czyli
+        $$(\ast)\qquad z \leqslant x \ \text{ lub } \ f(x) \leqslant z \quad \text{dla } x \in B,\ z \in A^*$$
+        \item $B \in \mathcal{A}$: $a \in B$ oczywiście. (b): jeśli $y < f(x)$, to z $(\ast)$ $y \leqslant x$, więc $f(y) \leqslant f(x)$. (c): jeśli $y < \sup L$, to istnieje $x \in L$ z $x \nleqslant y$, więc z $(\ast)$ $y < x$ i $f(y) \leqslant x \leqslant \sup L$
+    \end{itemize}
+\end{proof}
+\end{frame}
+
+\begin{frame}{Twierdzenie o punkcie stałym (koniec dowodu)}
+\begin{proof}[Dowód (cd.)]
+    \begin{itemize}
+        \item $B = A^*$, więc z $(\ast)$ dla $x, z \in A^*$: $z \leqslant x$ lub $x \leqslant f(x) \leqslant z$, czyli $A^*$ jest łańcuchem
+        \item Niech $x^* = \sup A^*$. Z (c): $x^* \in A^*$, z (b): $f(x^*) \in A^*$, więc $f(x^*) \leqslant x^*$
+        \item Z założenia $x^* \leqslant f(x^*)$, zatem $f(x^*) = x^*$ \qedhere
     \end{itemize}
 \end{proof}
 \end{frame}
@@ -238,7 +261,7 @@ Jeśli każdy łańcuch ma ograniczenie dolne, to w $X$ istnieje element minimal
     \end{mythm}
     \begin{proof}
         \begin{itemize}
-            \item Niech $\mathcal{L}$ będzie rodziną wszystkich łańcuchów w $(X, \le)$ uporządkowaną przez $\subseteq$
+            \item Niech $\mathcal{L}$ będzie rodziną wszystkich łańcuchów w $(X, \leqslant)$ uporządkowaną przez $\subseteq$
             \item Dla dowolnego łańcucha rodzin $\mathcal{M} \subseteq \mathcal{L}$, zbiór $\bigcup \mathcal{M}$ jest łańcuchem w $X$ i stanowi kres górny rodziny $\mathcal{M}$ w $(\mathcal{L}, \subseteq)$
             \item Zatem $(\mathcal{L}, \subseteq)$ spełnia założenia poprzedniego twierdzenia ("Słabszy LKZ")  $\implies$ w $\mathcal{L}$ istnieje element maksymalny $L$
         \end{itemize}
@@ -252,7 +275,7 @@ Jeśli każdy łańcuch ma ograniczenie dolne, to w $X$ istnieje element minimal
     \begin{proof}
         \begin{itemize}
             \item Założenie: Każdy łańcuch w $(X, \leqslant)$ ma ograniczenie górne
-            \item Krok 1: Z twierdzenia Hausdorffa wybieramy w $X$ łańcuch maksymalny $L$4
+            \item Krok 1: Z twierdzenia Hausdorffa wybieramy w $X$ łańcuch maksymalny $L$
             \item Krok 2: Z założenia LKZ łańcuch $L$ posiada ograniczenie górne $a \in X$
             \item Krok 3: Wykazujemy, że $a$ jest elementem maksymalnym w całym $X$: Z maksymalności $L$ wynika, że $a \in L$
             \item Gdyby istniał $x \in X$ taki, że $a < x$, to zbiór $L \cup \{x\}$ byłby łańcuchem ściśle zawierającym $L$, co przeczyłoby maksymalności $L$
